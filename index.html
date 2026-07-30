@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScienPrintUAE | Premium Printing in Dubai</title>
+    <meta
+      name="description"
+      content="Premium UAE printing catalogue for laser printing, UV printing, DTF, offset printing, silk screen printing, embroidery, and custom print quotes."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="ScienPrintUAE home">
+        <span class="brand-mark">
+          <img src="assets/scienprintuae-logo.png" alt="ScienPrintUAE logo" />
+        </span>
+        <span class="brand-name">Scien<span>Print</span>UAE</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#laser-gallery">Laser Gallery</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="cart-button" id="cartToggle" type="button">
+        Cart <span id="cartCount">0</span>
+      </button>
+    </header>
+
+    <div class="overlay" id="overlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Cart drawer">
+      <div class="drawer-head">
+        <h2>Your Quote List</h2>
+        <button class="drawer-close" id="drawerClose" type="button" aria-label="Close cart">x</button>
+      </div>
+      <div class="drawer-items" id="drawerItems">
+        <p class="empty-cart">Your cart is empty.</p>
+      </div>
+      <div class="drawer-foot">
+        <div class="drawer-total">
+          <span>Starting total</span>
+          <strong id="drawerTotal">AED 0</strong>
+        </div>
+        <a class="btn btn-primary" href="#quote" id="quoteLink">Prepare Quote</a>
+      </div>
+    </aside>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-inner">
+          <p class="section-kicker">Premium print ordering - Dubai, UAE</p>
+          <h1>Prints that make your brand feel expensive.</h1>
+          <p>
+            ScienPrintUAE creates polished laser printing, UV printing, direct
+            to film, offset printing, silk screen printing, and embroidery from
+            Jumeirah Lakes Tower, Dubai.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="#products">Shop Products</a>
+            <a class="btn btn-outline" href="#laser-gallery">View Laser Samples</a>
+            <a class="btn btn-outline" href="#pricing">View Pricing</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="about">
+        <div class="about-grid">
+          <div class="about-image" aria-label="Premium print production preview"></div>
+          <div class="about-copy">
+            <p class="section-kicker">Who we are</p>
+            <h2>Clean print, sharp finishing, easy ordering.</h2>
+            <p>
+              A premium ecommerce-style print experience for UAE customers who
+              need professional output without a confusing order process.
+            </p>
+            <p>
+              Choose from standard products, add items to your quote list, then
+              send the request for material, finishing, artwork, timing, and
+              delivery confirmation.
+            </p>
+            <div class="stats">
+              <div><strong>JLT</strong><span>Dubai Location</span></div>
+              <div><strong>UAE</strong><span>Delivery Focus</span></div>
+              <div><strong>Premium</strong><span>Finishing Options</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="products" id="products">
+        <div class="section-head">
+          <p class="section-kicker">Shop</p>
+          <h2>Featured print products</h2>
+          <p>
+            Starting prices are shown for quick planning. Final quotes depend
+            on quantity, size, paper stock, finishing, artwork, and delivery.
+          </p>
+        </div>
+
+        <div class="filters" aria-label="Product filters">
+          <button class="filter active" data-filter="all" type="button">All</button>
+          <button class="filter" data-filter="LASER PRINTING" type="button">Laser Printing</button>
+          <button class="filter" data-filter="UV PRINTING" type="button">UV Printing</button>
+          <button class="filter" data-filter="DIRECT TO FILM (DTF)" type="button">DTF</button>
+          <button class="filter" data-filter="OFFSET PRINTING" type="button">Offset</button>
+          <button class="filter" data-filter="SILK SCREEN PRINTING" type="button">Silk Screen</button>
+          <button class="filter" data-filter="EMBROIDERY" type="button">Embroidery</button>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <section class="laser-gallery-section" id="laser-gallery">
+        <div class="section-head">
+          <p class="section-kicker">Laser gallery</p>
+          <h2>Sample laser engraving and printing work</h2>
+          <p>
+            Real sample photos showing wooden gift sets, engraved table signs,
+            QR plaques, wayfinding pieces, and custom wooden panels.
+          </p>
+        </div>
+        <div class="laser-sample-gallery laser-sample-gallery-large" aria-label="Laser engraving sample gallery">
+          <figure>
+            <img src="assets/laser-samples/laser-corporate-gift-set.jpeg" alt="Laser engraved corporate gift set" />
+            <figcaption>Corporate gift sets</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/laser-samples/laser-restaurant-table-signs.jpeg" alt="Laser engraved wooden restaurant table signs" />
+            <figcaption>Table signs & logos</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/laser-samples/laser-wifi-qr-plaque.jpeg" alt="Laser engraved wooden WiFi QR plaque" />
+            <figcaption>QR plaques</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/laser-samples/laser-wayfinding-signs.jpeg" alt="Laser cut wooden wayfinding signs" />
+            <figcaption>Wayfinding signs</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/laser-samples/laser-wooden-keepsake.jpeg" alt="Laser engraved wooden keepsake sample" />
+            <figcaption>Wooden keepsakes</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/laser-samples/laser-custom-panel.jpeg" alt="Custom laser engraved wooden panel" />
+            <figcaption>Custom panels</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="services" id="services">
+        <div class="section-head">
+          <p class="section-kicker">What we do</p>
+          <h2>Printing services</h2>
+          <p>
+            Choose a production method first, then request the product, finish,
+            quantity, and delivery timeline that fits your brand.
+          </p>
+        </div>
+        <div class="service-grid">
+          <article>
+            <span>01</span>
+            <h3>LASER PRINTING</h3>
+            <p>Precision laser work for detailed markings, engraved-style finishes, signage, gifts, and specialty branding.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>UV PRINTING</h3>
+            <p>Premium full-colour direct printing on rigid and specialty surfaces including acrylic, boards, gifts, and panels.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>DIRECT TO FILM (DTF)</h3>
+            <p>Vibrant garment transfers for T-shirts, polos, uniforms, tote bags, and branded apparel batches.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>OFFSET PRINTING</h3>
+            <p>High-volume business and marketing print for cards, flyers, catalogues, stationery, packaging, and brochures.</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>SILK SCREEN PRINTING</h3>
+            <p>Durable spot-colour printing for apparel, tote bags, packaging, labels, promotional items, and bulk branded runs.</p>
+          </article>
+          <article>
+            <span>06</span>
+            <h3>EMBROIDERY</h3>
+            <p>Thread-based branding for uniforms, caps, polos, workwear, towels, bags, and premium textile merchandise.</p>
+          </article>
+        </div>
+
+        <div class="subcategory-panel">
+          <div class="subcategory-head">
+            <p class="section-kicker">Laser printing categories</p>
+            <h3>Wooden engraved products and custom gift ranges</h3>
+            <p>
+              Laser printing covers personalised decor, office pieces,
+              accessories, and occasion-based keepsakes with custom text,
+              logos, quotes, verses, or artwork.
+            </p>
+          </div>
+          <div class="laser-sample-gallery" aria-label="Laser engraving sample photos">
+            <figure>
+              <img src="assets/laser-samples/laser-corporate-gift-set.jpeg" alt="Laser engraved corporate gift set" />
+              <figcaption>Corporate gift sets</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/laser-samples/laser-restaurant-table-signs.jpeg" alt="Laser engraved wooden restaurant table signs" />
+              <figcaption>Table signs & logos</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/laser-samples/laser-wifi-qr-plaque.jpeg" alt="Laser engraved wooden WiFi QR plaque" />
+              <figcaption>QR plaques</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/laser-samples/laser-wayfinding-signs.jpeg" alt="Laser cut wooden wayfinding signs" />
+              <figcaption>Wayfinding signs</figcaption>
+            </figure>
+          </div>
+          <div class="subcategory-grid">
+            <article>
+              <h4>Personalized Gifts & Decor</h4>
+              <ul>
+                <li>Engraved wooden photo frames and plaques with custom photo and text</li>
+                <li>Wooden wall art with engraved quotes or verses</li>
+                <li>Engraved Islamic calligraphy panels with Quranic verses or duas</li>
+                <li>Wooden clocks with engraved designs or text</li>
+                <li>Wooden coasters, single pieces or sets, with custom logos or monograms</li>
+                <li>Wooden jewelry and keepsake boxes with engraved lids</li>
+              </ul>
+            </article>
+            <article>
+              <h4>Corporate & Office Items</h4>
+              <ul>
+                <li>Engraved wooden name plates and desk nameplates</li>
+                <li>Wooden trophies and recognition awards</li>
+                <li>Wooden pen holders and desk organizers</li>
+                <li>Wooden business card holders</li>
+                <li>Engraved wooden trays</li>
+              </ul>
+            </article>
+            <article>
+              <h4>Everyday & Accessories</h4>
+              <ul>
+                <li>Wooden keychains with custom names or logos</li>
+                <li>Wooden phone stands</li>
+                <li>Wooden bookmarks</li>
+                <li>Engraved cutting boards</li>
+                <li>Wooden calendars and desk calendars with engraving</li>
+              </ul>
+            </article>
+            <article>
+              <h4>Occasion-Based</h4>
+              <ul>
+                <li>Wedding and anniversary keepsake plaques</li>
+                <li>Custom gift sets combining multiple engraved wooden items</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="subcategory-panel subcategory-panel-compact">
+          <div class="subcategory-head">
+            <p class="section-kicker">Offset printing categories</p>
+            <h3>Business stationery and high-volume print essentials</h3>
+            <p>
+              Offset printing is ideal for clean, consistent corporate material
+              and repeat business print runs.
+            </p>
+          </div>
+          <div class="subcategory-grid subcategory-grid-compact">
+            <article>
+              <h4>Business Essentials</h4>
+              <ul>
+                <li>Business Card</li>
+                <li>Envelope</li>
+                <li>Letterhead</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="pricing-section" id="pricing">
+        <div class="section-head">
+          <p class="section-kicker">Pricing</p>
+          <h2>ScienPrintUAE service rates</h2>
+          <p>
+            Use these prices for quick planning. Final quotes may vary based on
+            artwork, material, finishing, size, quantity, and delivery.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <h3>LASER PRINTING &amp; ENGRAVING</h3>
+            <div class="price-line">
+              <span>Depth: 0.2 to 0.5 mm</span>
+              <strong>AED 5 to AED 10 / sq. inch</strong>
+            </div>
+            <div class="price-line">
+              <span>Depth: 1.0 to 2.0 mm</span>
+              <strong>AED 15 to AED 25 / sq. inch</strong>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <h3>UV PRINTING</h3>
+            <div class="price-line">
+              <span>Flat rate range</span>
+              <strong>AED 3.0 to AED 5.0 / sq. inch</strong>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <h3>DIRECT TO FILM (DTF)</h3>
+            <div class="price-line">
+              <span>A5 / A4</span>
+              <strong>AED 0.4 to AED 0.5 / sq. inch</strong>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <h3>SILK SCREEN</h3>
+            <div class="price-line">
+              <span>Flat rate range</span>
+              <strong>AED 0.2 to AED 0.5 / sq. inch</strong>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <h3>EMBROIDERY</h3>
+            <div class="price-line">
+              <span>Logo / stitch area</span>
+              <strong>AED 2.8 / sq. inch</strong>
+            </div>
+          </article>
+        </div>
+
+        <div class="offset-price-panel">
+          <div class="subcategory-head">
+            <p class="section-kicker">Offset printing prices</p>
+            <h3>Business print packages</h3>
+          </div>
+          <div class="price-table-wrap">
+            <table class="price-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Specification</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Business Card</td><td>500 pcs</td><td>AED 150</td></tr>
+                <tr><td>Flyers</td><td>A5, 170 gsm, 1000 pcs</td><td>AED 350</td></tr>
+                <tr><td>Menu / Catalogue / Brochure</td><td>A3, 350 gsm, 3-fold, 10 pcs</td><td>AED 200</td></tr>
+                <tr><td>Letterheads</td><td>80 gsm, 500 pcs</td><td>AED 250</td></tr>
+                <tr><td>Envelopes</td><td>C4, 100 gsm, MOQ 500 pcs</td><td>AED 1.2 / pc</td></tr>
+                <tr><td>Envelopes</td><td>C4, 170 gsm, MOQ 500 pcs</td><td>AED 2.5 / pc</td></tr>
+                <tr><td>Envelopes</td><td>C4, 300 gsm, MOQ 500 pcs</td><td>AED 2.8 / pc</td></tr>
+                <tr><td>Stickers &amp; Labels</td><td>1000 pcs</td><td>AED 300</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <section class="process" id="process">
+        <div class="section-head">
+          <p class="section-kicker">How it works</p>
+          <h2>From request to finished print</h2>
+        </div>
+        <div class="process-grid">
+          <article>
+            <span>1</span>
+            <h3>Choose</h3>
+            <p>Add products to your quote list and include preferred quantities.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Confirm</h3>
+            <p>Share artwork, size, stock, finish, deadline, and delivery location.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Approve</h3>
+            <p>Review the final quote and approve production details before printing.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Receive</h3>
+            <p>Collect or arrange delivery from Jumeirah Lakes Tower, Dubai, UAE.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="quote" id="quote">
+        <div class="quote-box">
+          <div>
+            <p class="section-kicker">Fast quote</p>
+            <h2>Request a custom print quote</h2>
+            <p>
+              Fill in your details and copy a ready-to-send enquiry. Send it to
+              ScienPrintUAE on Instagram for confirmation.
+            </p>
+          </div>
+          <form class="quote-form" id="quoteForm">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="text" name="contact" placeholder="Email or phone" required />
+            <select name="service">
+              <option>LASER PRINTING</option>
+              <option>UV PRINTING</option>
+              <option>DIRECT TO FILM (DTF)</option>
+              <option>OFFSET PRINTING</option>
+              <option>SILK SCREEN PRINTING</option>
+              <option>EMBROIDERY</option>
+              <option>Custom Order</option>
+            </select>
+            <textarea name="notes" rows="4" placeholder="Tell us sizes, quantity, finishing, deadline, or delivery details"></textarea>
+            <button class="btn btn-primary" type="submit">Copy Enquiry</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="section-head">
+          <p class="section-kicker">Get in touch</p>
+          <h2>Start your print order</h2>
+          <p>Message ScienPrintUAE online or visit us in Jumeirah Lakes Tower, Dubai, UAE.</p>
+        </div>
+        <div class="contact-grid">
+          <article>
+            <span>IG</span>
+            <h3>Instagram</h3>
+            <a href="https://www.instagram.com/scienprintuae/" target="_blank" rel="noreferrer">@scienprintuae</a>
+          </article>
+          <article>
+            <span>LOC</span>
+            <h3>Location</h3>
+            <p>Jumeirah Lakes Tower, Dubai, UAE</p>
+          </article>
+          <article>
+            <span>QT</span>
+            <h3>Quote list</h3>
+            <button class="inline-button" id="contactCartButton" type="button">Open cart</button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="footer-brand" href="#home">Scien<span>Print</span>UAE</a>
+      <p>Premium printing and branded production - Jumeirah Lakes Tower, Dubai, UAE</p>
+      <a href="https://www.instagram.com/scienprintuae/" target="_blank" rel="noreferrer">@scienprintuae</a>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
