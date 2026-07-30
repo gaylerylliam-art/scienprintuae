@@ -1,0 +1,299 @@
+const products = [
+  {
+    id: "standard-business-cards",
+    name: "Standard Business Cards",
+    category: "OFFSET PRINTING",
+    desc: "Clean everyday cards for founders, teams, retail counters, and events.",
+    price: 75,
+    badge: "Popular",
+    img: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=900&auto=format&fit=crop",
+    options: ["Matt or gloss", "Premium stock", "Rounded corners"],
+  },
+  {
+    id: "premium-business-cards",
+    name: "Premium Business Cards",
+    category: "OFFSET PRINTING",
+    desc: "Textured, kraft, shimmer, waterproof, foil, and spot UV card options.",
+    price: 145,
+    badge: "Premium",
+    img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=900&auto=format&fit=crop",
+    options: ["Foil", "Spot UV", "Textured paper"],
+  },
+  {
+    id: "flyers-leaflets",
+    name: "Flyers & Leaflets",
+    category: "OFFSET PRINTING",
+    desc: "Standard, express, laminated, kraft, square, waterproof, and folded flyers.",
+    price: 95,
+    badge: "Campaign",
+    img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=900&auto=format&fit=crop",
+    options: ["A6 to A3", "Gloss or matt", "Folded"],
+  },
+  {
+    id: "booklets-catalogues",
+    name: "Booklets & Catalogues",
+    category: "OFFSET PRINTING",
+    desc: "Stapled booklets, company profiles, glue-bound catalogues, and brochures.",
+    price: 180,
+    badge: "Branding",
+    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=900&auto=format&fit=crop",
+    options: ["Stapled", "Glue-bound", "Profiles"],
+  },
+  {
+    id: "stickers-labels",
+    name: "Stickers & Labels",
+    category: "UV PRINTING",
+    desc: "Round, square, paper, waterproof, and custom-shape stickers for brands.",
+    price: 70,
+    badge: "Labels",
+    img: "https://images.unsplash.com/photo-1607703703520-bb638e84caf2?q=80&w=900&auto=format&fit=crop",
+    options: ["Any shape", "Waterproof", "Kiss-cut"],
+  },
+  {
+    id: "rollup-banners",
+    name: "Roll-up Banners",
+    category: "UV PRINTING",
+    desc: "Portable roll-up displays for exhibitions, counters, launches, and offices.",
+    price: 220,
+    badge: "Events",
+    img: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=900&auto=format&fit=crop",
+    options: ["Normal base", "Premium base", "Custom sizes"],
+  },
+  {
+    id: "foam-board-panels",
+    name: "Foam Board Panels",
+    category: "UV PRINTING",
+    desc: "Rigid display panels for presentations, retail signage, and event stands.",
+    price: 85,
+    badge: "Display",
+    img: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=900&auto=format&fit=crop",
+    options: ["5mm", "10mm", "Mounted print"],
+  },
+  {
+    id: "corporate-gifts",
+    name: "Laser Branded Gifts",
+    category: "LASER PRINTING",
+    desc: "Precision-marked corporate gifts, plaques, notebooks, tags, desk pieces, and branded keepsakes.",
+    price: 12,
+    badge: "Laser",
+    img: "assets/laser-samples/laser-corporate-gift-set.jpeg",
+    options: ["Logo print", "Gift sets", "Bulk orders"],
+  },
+  {
+    id: "laser-wooden-signs",
+    name: "Laser Wooden Signs & Plaques",
+    category: "LASER PRINTING",
+    desc: "Wooden QR plaques, table signs, wall pieces, wayfinding signs, and custom engraved decor.",
+    price: 85,
+    badge: "Engraved",
+    img: "assets/laser-samples/laser-restaurant-table-signs.jpeg",
+    options: ["QR plaques", "Table signs", "Wall decor"],
+  },
+  {
+    id: "tshirts-polos",
+    name: "T-shirts & Polos",
+    category: "DIRECT TO FILM (DTF)",
+    desc: "Round neck shirts, heavyweight shirts, kids shirts, and branded polos.",
+    price: 55,
+    badge: "Apparel",
+    img: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=900&auto=format&fit=crop",
+    options: ["T-shirts", "Polos", "Team wear"],
+  },
+  {
+    id: "retail-packaging",
+    name: "Retail Product Boxes",
+    category: "OFFSET PRINTING",
+    desc: "Retail boxes, interlock formats, custom shapes, and countertop displays.",
+    price: 250,
+    badge: "Packaging",
+    img: "https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=900&auto=format&fit=crop",
+    options: ["Custom dieline", "Retail ready", "Display boxes"],
+  },
+  {
+    id: "food-packaging",
+    name: "Food Packaging",
+    category: "OFFSET PRINTING",
+    desc: "Fast food boxes, bakery boxes, greaseproof wrappers, cups, and paper bags.",
+    price: 190,
+    badge: "Food",
+    img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=900&auto=format&fit=crop",
+    options: ["Bakery", "Takeaway", "Paper bags"],
+  },
+  {
+    id: "embroidered-uniforms",
+    name: "Embroidered Uniforms",
+    category: "EMBROIDERY",
+    desc: "Thread-embroidered logos for polos, caps, uniforms, aprons, workwear, bags, and towels.",
+    price: 35,
+    badge: "Thread",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=900&auto=format&fit=crop",
+    options: ["Polos", "Caps", "Uniforms"],
+  },
+  {
+    id: "silk-screen-branded-merch",
+    name: "Silk Screen Branded Merchandise",
+    category: "SILK SCREEN PRINTING",
+    desc: "Durable spot-colour prints for tote bags, apparel, packaging, labels, and promotional items.",
+    price: 45,
+    badge: "Screen",
+    img: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?q=80&w=900&auto=format&fit=crop",
+    options: ["Tote bags", "Apparel", "Bulk branding"],
+  },
+];
+
+const productGrid = document.querySelector("#productGrid");
+const drawer = document.querySelector("#cartDrawer");
+const overlay = document.querySelector("#overlay");
+const drawerItems = document.querySelector("#drawerItems");
+const drawerTotal = document.querySelector("#drawerTotal");
+const cartCount = document.querySelector("#cartCount");
+const filters = document.querySelectorAll(".filter");
+const quoteForm = document.querySelector("#quoteForm");
+const quoteLink = document.querySelector("#quoteLink");
+const cart = new Map();
+
+function money(value) {
+  return `AED ${value.toLocaleString("en-AE")}`;
+}
+
+function renderProducts(filter = "all") {
+  const shown = filter === "all" ? products : products.filter((product) => product.category === filter);
+  productGrid.innerHTML = shown
+    .map(
+      (product) => `
+        <article class="product-card">
+          <div class="product-img" style="background-image:url('${product.img}')">
+            <span class="product-badge">${product.badge}</span>
+          </div>
+          <div class="product-body">
+            <h3>${product.name}</h3>
+            <p>${product.desc}</p>
+            <div class="product-options">
+              ${product.options.map((option) => `<span>${option}</span>`).join("")}
+            </div>
+            <div class="product-footer">
+              <div class="price">${money(product.price)} <span>starting from</span></div>
+              <button class="add-btn" data-product-id="${product.id}" type="button">Add</button>
+            </div>
+          </div>
+        </article>
+      `,
+    )
+    .join("");
+}
+
+function getSelectedProductsText() {
+  return Array.from(cart.values())
+    .map(({ product, quantity }) => `${quantity} x ${product.name}`)
+    .join(", ");
+}
+
+function renderCart() {
+  const items = Array.from(cart.values());
+  const count = items.reduce((sum, item) => sum + item.quantity, 0);
+  const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+
+  cartCount.textContent = count;
+  drawerTotal.textContent = money(total);
+
+  if (!items.length) {
+    drawerItems.innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
+    return;
+  }
+
+  drawerItems.innerHTML = items
+    .map(
+      ({ product, quantity }) => `
+        <div class="drawer-row">
+          <div class="drawer-row-top">
+            <strong>${product.name}</strong>
+            <span>${money(product.price * quantity)}</span>
+          </div>
+          <div class="quantity-controls">
+            <button type="button" data-action="decrease" data-product-id="${product.id}" aria-label="Decrease ${product.name}">-</button>
+            <span>${quantity}</span>
+            <button type="button" data-action="increase" data-product-id="${product.id}" aria-label="Increase ${product.name}">+</button>
+          </div>
+        </div>
+      `,
+    )
+    .join("");
+}
+
+function addToCart(productId) {
+  const product = products.find((item) => item.id === productId);
+  if (!product) return;
+
+  const existing = cart.get(productId);
+  cart.set(productId, {
+    product,
+    quantity: existing ? existing.quantity + 1 : 1,
+  });
+  renderCart();
+  openCart();
+}
+
+function openCart() {
+  drawer.classList.add("open");
+  overlay.classList.add("show");
+}
+
+function closeCart() {
+  drawer.classList.remove("open");
+  overlay.classList.remove("show");
+}
+
+document.querySelector("#cartToggle").addEventListener("click", openCart);
+document.querySelector("#contactCartButton").addEventListener("click", openCart);
+document.querySelector("#drawerClose").addEventListener("click", closeCart);
+overlay.addEventListener("click", closeCart);
+quoteLink.addEventListener("click", closeCart);
+
+productGrid.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-product-id]");
+  if (!button) return;
+  addToCart(button.dataset.productId);
+});
+
+drawerItems.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-action]");
+  if (!button) return;
+
+  const item = cart.get(button.dataset.productId);
+  if (!item) return;
+
+  item.quantity += button.dataset.action === "increase" ? 1 : -1;
+  if (item.quantity <= 0) {
+    cart.delete(button.dataset.productId);
+  }
+  renderCart();
+});
+
+filters.forEach((button) => {
+  button.addEventListener("click", () => {
+    filters.forEach((filter) => filter.classList.remove("active"));
+    button.classList.add("active");
+    renderProducts(button.dataset.filter);
+  });
+});
+
+quoteForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(quoteForm);
+  const message = [
+    "Hi ScienPrintUAE, I would like a print quote.",
+    `Name: ${formData.get("name")}`,
+    `Contact: ${formData.get("contact")}`,
+    `Service: ${formData.get("service")}`,
+    `Products: ${getSelectedProductsText() || "No products selected"}`,
+    `Notes: ${formData.get("notes") || "No notes"}`,
+  ].join("\n");
+
+  navigator.clipboard
+    ?.writeText(message)
+    .then(() => alert("Your enquiry is copied. Send it to ScienPrintUAE on Instagram."))
+    .catch(() => alert(message));
+});
+
+renderProducts();
+renderCart();

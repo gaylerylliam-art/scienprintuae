@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node scripts/build-static.cjs"
-  }
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@netlify/plugin-nextjs": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {}
 }
