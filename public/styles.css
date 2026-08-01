@@ -332,6 +332,10 @@ h3 {
   text-transform: uppercase;
 }
 
+.location-nowrap {
+  white-space: nowrap;
+}
+
 .hero p:not(.section-kicker) {
   max-width: 720px;
   margin: 0 auto 34px;
