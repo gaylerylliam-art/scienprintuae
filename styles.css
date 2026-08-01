@@ -314,7 +314,7 @@ h3 {
   text-align: center;
   background:
     linear-gradient(rgba(20, 17, 14, 0.72), rgba(20, 17, 14, 0.82)),
-    url("https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1800&auto=format&fit=crop");
+    url("assets/laser-printing-hero.jpeg");
   background-position: center;
   background-size: cover;
 }
