@@ -118,28 +118,35 @@
             QR plaques, wayfinding pieces, and custom wooden panels.
           </p>
         </div>
+        <div class="gallery-filters" aria-label="Laser gallery filters">
+          <button class="gallery-filter active" data-gallery-filter="all" type="button">All</button>
+          <button class="gallery-filter" data-gallery-filter="gifts-decor" type="button">Gifts &amp; Decor</button>
+          <button class="gallery-filter" data-gallery-filter="corporate" type="button">Corporate</button>
+          <button class="gallery-filter" data-gallery-filter="wayfinding" type="button">Wayfinding</button>
+          <button class="gallery-filter" data-gallery-filter="keepsakes" type="button">Keepsakes</button>
+        </div>
         <div class="laser-sample-gallery laser-sample-gallery-large" aria-label="Laser engraving sample gallery">
-          <figure>
+          <figure data-gallery-category="corporate">
             <img src="assets/laser-samples/laser-corporate-gift-set.jpeg" alt="Laser engraved corporate gift set" />
             <figcaption>Corporate gift sets</figcaption>
           </figure>
-          <figure>
+          <figure data-gallery-category="corporate">
             <img src="assets/laser-samples/laser-restaurant-table-signs.jpeg" alt="Laser engraved wooden restaurant table signs" />
             <figcaption>Table signs & logos</figcaption>
           </figure>
-          <figure>
+          <figure data-gallery-category="corporate">
             <img src="assets/laser-samples/laser-wifi-qr-plaque.jpeg" alt="Laser engraved wooden WiFi QR plaque" />
             <figcaption>QR plaques</figcaption>
           </figure>
-          <figure>
+          <figure data-gallery-category="wayfinding">
             <img src="assets/laser-samples/laser-wayfinding-signs.jpeg" alt="Laser cut wooden wayfinding signs" />
             <figcaption>Wayfinding signs</figcaption>
           </figure>
-          <figure>
+          <figure data-gallery-category="keepsakes">
             <img src="assets/laser-samples/laser-wooden-keepsake.jpeg" alt="Laser engraved wooden keepsake sample" />
             <figcaption>Wooden keepsakes</figcaption>
           </figure>
-          <figure>
+          <figure data-gallery-category="gifts-decor">
             <img src="assets/laser-samples/laser-custom-panel.jpeg" alt="Custom laser engraved wooden panel" />
             <figcaption>Custom panels</figcaption>
           </figure>
@@ -203,24 +210,6 @@
               accessories, and occasion-based keepsakes with custom text,
               logos, quotes, verses, or artwork.
             </p>
-          </div>
-          <div class="laser-sample-gallery" aria-label="Laser engraving sample photos">
-            <figure>
-              <img src="assets/laser-samples/laser-corporate-gift-set.jpeg" alt="Laser engraved corporate gift set" />
-              <figcaption>Corporate gift sets</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/laser-samples/laser-restaurant-table-signs.jpeg" alt="Laser engraved wooden restaurant table signs" />
-              <figcaption>Table signs & logos</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/laser-samples/laser-wifi-qr-plaque.jpeg" alt="Laser engraved wooden WiFi QR plaque" />
-              <figcaption>QR plaques</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/laser-samples/laser-wayfinding-signs.jpeg" alt="Laser cut wooden wayfinding signs" />
-              <figcaption>Wayfinding signs</figcaption>
-            </figure>
           </div>
           <div class="subcategory-grid">
             <article>
@@ -453,6 +442,17 @@
         </div>
       </section>
     </main>
+
+    <div class="lightbox" id="galleryLightbox" aria-hidden="true" role="dialog" aria-label="Laser gallery image viewer">
+      <div class="lightbox-backdrop" data-lightbox-close></div>
+      <div class="lightbox-panel" role="document">
+        <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close gallery viewer">x</button>
+        <button class="lightbox-nav lightbox-prev" type="button" data-lightbox-prev aria-label="Previous image">‹</button>
+        <img id="lightboxImage" src="" alt="" />
+        <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="Next image">›</button>
+        <p id="lightboxCaption"></p>
+      </div>
+    </div>
 
     <footer class="site-footer">
       <a class="footer-brand" href="#home">Scien<span>Print</span>UAE</a>

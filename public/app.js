@@ -144,8 +144,18 @@ const products = [
 const productGrid = document.querySelector("#productGrid");
 const siteHeader = document.querySelector("#siteHeader");
 const filters = document.querySelectorAll(".filter");
+const galleryFilters = document.querySelectorAll(".gallery-filter");
+const galleryItems = Array.from(document.querySelectorAll("[data-gallery-category]"));
+const lightbox = document.querySelector("#galleryLightbox");
+const lightboxImage = document.querySelector("#lightboxImage");
+const lightboxCaption = document.querySelector("#lightboxCaption");
+const lightboxCloseButtons = document.querySelectorAll("[data-lightbox-close]");
+const lightboxPrev = document.querySelector("[data-lightbox-prev]");
+const lightboxNext = document.querySelector("[data-lightbox-next]");
 const quoteForm = document.querySelector("#quoteForm");
 const serviceSelect = quoteForm?.querySelector('select[name="service"]');
+let activeGalleryIndex = 0;
+let lastFocusedElement = null;
 
 function money(value) {
   return `AED ${value.toLocaleString("en-AE")}`;
@@ -183,6 +193,99 @@ filters.forEach((button) => {
     button.classList.add("active");
     renderProducts(button.dataset.filter);
   });
+});
+
+galleryItems.forEach((item, index) => {
+  item.tabIndex = 0;
+  item.setAttribute("role", "button");
+  item.setAttribute("aria-label", `Open ${item.querySelector("figcaption")?.textContent || "gallery image"}`);
+
+  item.addEventListener("click", () => openLightbox(index));
+  item.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openLightbox(index);
+    }
+  });
+});
+
+galleryFilters.forEach((button) => {
+  button.addEventListener("click", () => {
+    galleryFilters.forEach((filter) => filter.classList.remove("active"));
+    button.classList.add("active");
+
+    galleryItems.forEach((item) => {
+      const shouldShow = button.dataset.galleryFilter === "all" || item.dataset.galleryCategory === button.dataset.galleryFilter;
+      item.classList.toggle("is-hidden", !shouldShow);
+    });
+  });
+});
+
+function getVisibleGalleryItems() {
+  return galleryItems.filter((item) => !item.classList.contains("is-hidden"));
+}
+
+function updateLightbox(item) {
+  const image = item.querySelector("img");
+  const caption = item.querySelector("figcaption")?.textContent || image.alt;
+  lightboxImage.src = image.src;
+  lightboxImage.alt = image.alt;
+  lightboxCaption.textContent = caption;
+}
+
+function openLightbox(index) {
+  if (!lightbox) return;
+  const item = galleryItems[index];
+  if (!item || item.classList.contains("is-hidden")) return;
+
+  activeGalleryIndex = getVisibleGalleryItems().indexOf(item);
+  lastFocusedElement = document.activeElement;
+  updateLightbox(item);
+  lightbox.classList.add("open");
+  lightbox.setAttribute("aria-hidden", "false");
+  document.body.classList.add("lightbox-active");
+  lightbox.querySelector(".lightbox-close")?.focus();
+}
+
+function closeLightbox() {
+  if (!lightbox?.classList.contains("open")) return;
+  lightbox.classList.remove("open");
+  lightbox.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("lightbox-active");
+  lastFocusedElement?.focus();
+}
+
+function moveLightbox(direction) {
+  const visibleItems = getVisibleGalleryItems();
+  if (!visibleItems.length) return;
+  activeGalleryIndex = (activeGalleryIndex + direction + visibleItems.length) % visibleItems.length;
+  updateLightbox(visibleItems[activeGalleryIndex]);
+}
+
+lightboxCloseButtons.forEach((button) => button.addEventListener("click", closeLightbox));
+lightboxPrev?.addEventListener("click", () => moveLightbox(-1));
+lightboxNext?.addEventListener("click", () => moveLightbox(1));
+
+document.addEventListener("keydown", (event) => {
+  if (!lightbox?.classList.contains("open")) return;
+
+  if (event.key === "Escape") closeLightbox();
+  if (event.key === "ArrowLeft") moveLightbox(-1);
+  if (event.key === "ArrowRight") moveLightbox(1);
+
+  if (event.key === "Tab") {
+    const focusable = Array.from(lightbox.querySelectorAll("button"));
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
 });
 
 function updateHeaderState() {
