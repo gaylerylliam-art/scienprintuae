@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header" id="siteHeader">
       <a class="brand" href="#home" aria-label="ScienPrintUAE home">
         <span class="brand-mark">
           <img src="assets/scienprintuae-logo.png" alt="ScienPrintUAE logo" />
@@ -27,8 +27,13 @@
 
       <nav class="main-nav" aria-label="Main navigation">
         <a href="#home">Home</a>
-        <a href="#products">Work</a>
-        <a href="#laser-gallery">Laser Gallery</a>
+        <div class="nav-group">
+          <a href="#products">Work</a>
+          <div class="nav-dropdown" aria-label="Work links">
+            <a href="#products">Capabilities</a>
+            <a href="#laser-gallery">Laser Gallery</a>
+          </div>
+        </div>
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
         <a href="#process">Process</a>
@@ -40,15 +45,15 @@
 
     <main>
       <section class="hero" id="home">
-        <div class="hero-inner">
+        <div class="hero-inner reveal">
           <p class="section-kicker">Premium printing services - Dubai, UAE</p>
           <h1>Prints that make your brand feel expensive.</h1>
-          <p>
+          <p class="hero-copy">
             ScienPrintUAE creates polished laser printing, UV printing, direct
             to film, offset printing, silk screen printing, and embroidery from
             <span class="location-nowrap">Jumeirah Lakes Tower, Dubai</span>.
           </p>
-          <div class="button-row">
+          <div class="button-row reveal reveal-delay">
             <a class="btn btn-primary" href="#quote">Request a Quote</a>
             <a class="btn btn-outline" href="#laser-gallery">View Laser Samples</a>
             <a class="btn btn-outline" href="#pricing">View Pricing</a>
@@ -152,34 +157,40 @@
         </div>
         <div class="service-grid">
           <article>
-            <span>01</span>
+            <span class="service-icon" aria-hidden="true">LX</span>
             <h3>LASER PRINTING</h3>
             <p>Precision laser work for detailed markings, engraved-style finishes, signage, gifts, and specialty branding.</p>
+            <a class="service-quote-link" href="#quote" data-service-quote="LASER PRINTING">Get a quote</a>
           </article>
           <article>
-            <span>02</span>
+            <span class="service-icon" aria-hidden="true">UV</span>
             <h3>UV PRINTING</h3>
             <p>Premium full-colour direct printing on rigid and specialty surfaces including acrylic, boards, gifts, and panels.</p>
+            <a class="service-quote-link" href="#quote" data-service-quote="UV PRINTING">Get a quote</a>
           </article>
           <article>
-            <span>03</span>
+            <span class="service-icon" aria-hidden="true">DTF</span>
             <h3>DIRECT TO FILM (DTF)</h3>
             <p>Vibrant garment transfers for T-shirts, polos, uniforms, tote bags, and branded apparel batches.</p>
+            <a class="service-quote-link" href="#quote" data-service-quote="DIRECT TO FILM (DTF)">Get a quote</a>
           </article>
           <article>
-            <span>04</span>
+            <span class="service-icon" aria-hidden="true">OF</span>
             <h3>OFFSET PRINTING</h3>
             <p>High-volume business and marketing print for cards, flyers, catalogues, stationery, packaging, and brochures.</p>
+            <a class="service-quote-link" href="#quote" data-service-quote="OFFSET PRINTING">Get a quote</a>
           </article>
           <article>
-            <span>05</span>
+            <span class="service-icon" aria-hidden="true">SS</span>
             <h3>SILK SCREEN PRINTING</h3>
             <p>Durable spot-colour printing for apparel, tote bags, packaging, labels, promotional items, and bulk branded runs.</p>
+            <a class="service-quote-link" href="#quote" data-service-quote="SILK SCREEN PRINTING">Get a quote</a>
           </article>
           <article>
-            <span>06</span>
+            <span class="service-icon" aria-hidden="true">EM</span>
             <h3>EMBROIDERY</h3>
             <p>Thread-based branding for uniforms, caps, polos, workwear, towels, bags, and premium textile merchandise.</p>
+            <a class="service-quote-link" href="#quote" data-service-quote="EMBROIDERY">Get a quote</a>
           </article>
         </div>
 

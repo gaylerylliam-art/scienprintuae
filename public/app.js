@@ -142,8 +142,10 @@ const products = [
 ];
 
 const productGrid = document.querySelector("#productGrid");
+const siteHeader = document.querySelector("#siteHeader");
 const filters = document.querySelectorAll(".filter");
 const quoteForm = document.querySelector("#quoteForm");
+const serviceSelect = quoteForm?.querySelector('select[name="service"]');
 
 function money(value) {
   return `AED ${value.toLocaleString("en-AE")}`;
@@ -183,6 +185,40 @@ filters.forEach((button) => {
   });
 });
 
+function updateHeaderState() {
+  siteHeader?.classList.toggle("scrolled", window.scrollY > 12);
+}
+
+function showReveals() {
+  const revealItems = document.querySelectorAll(".reveal");
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.22 },
+  );
+
+  revealItems.forEach((item) => observer.observe(item));
+}
+
+document.querySelectorAll("[data-service-quote]").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (!serviceSelect) return;
+    serviceSelect.value = link.dataset.serviceQuote;
+  });
+});
+
 quoteForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(quoteForm);
@@ -200,4 +236,7 @@ quoteForm.addEventListener("submit", (event) => {
     .catch(() => alert(message));
 });
 
+window.addEventListener("scroll", updateHeaderState, { passive: true });
+updateHeaderState();
+showReveals();
 renderProducts();
