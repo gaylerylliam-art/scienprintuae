@@ -286,78 +286,83 @@
           </p>
         </div>
 
-        <div class="pricing-grid">
-          <article class="pricing-card">
+        <div class="pricing-tabs" role="tablist" aria-label="Pricing categories">
+          <button class="pricing-tab active" id="tab-laser" role="tab" aria-selected="true" aria-controls="panel-laser" data-price-tab="laser" type="button">Laser</button>
+          <button class="pricing-tab" id="tab-uv" role="tab" aria-selected="false" aria-controls="panel-uv" data-price-tab="uv" type="button">UV</button>
+          <button class="pricing-tab" id="tab-dtf" role="tab" aria-selected="false" aria-controls="panel-dtf" data-price-tab="dtf" type="button">DTF</button>
+          <button class="pricing-tab" id="tab-offset" role="tab" aria-selected="false" aria-controls="panel-offset" data-price-tab="offset" type="button">Offset</button>
+          <button class="pricing-tab" id="tab-silk" role="tab" aria-selected="false" aria-controls="panel-silk" data-price-tab="silk" type="button">Silk Screen</button>
+          <button class="pricing-tab" id="tab-embroidery" role="tab" aria-selected="false" aria-controls="panel-embroidery" data-price-tab="embroidery" type="button">Embroidery</button>
+        </div>
+
+        <div class="pricing-panels">
+          <article class="pricing-panel active" id="panel-laser" role="tabpanel" aria-labelledby="tab-laser" data-price-panel="laser">
             <h3>LASER PRINTING &amp; ENGRAVING</h3>
-            <div class="price-line">
-              <span>Depth: 0.2 to 0.5 mm</span>
-              <strong>AED 5 to AED 10 / sq. inch</strong>
-            </div>
-            <div class="price-line">
-              <span>Depth: 1.0 to 2.0 mm</span>
-              <strong>AED 15 to AED 25 / sq. inch</strong>
+            <div class="price-card-list">
+              <div class="price-row-card"><span>Depth: 0.2 to 0.5 mm</span><strong>AED 5 to AED 10 / sq. inch</strong></div>
+              <div class="price-row-card"><span>Depth: 1.0 to 2.0 mm</span><strong>AED 15 to AED 25 / sq. inch</strong></div>
             </div>
           </article>
 
-          <article class="pricing-card">
+          <article class="pricing-panel" id="panel-uv" role="tabpanel" aria-labelledby="tab-uv" data-price-panel="uv" hidden>
             <h3>UV PRINTING</h3>
-            <div class="price-line">
-              <span>Flat rate range</span>
-              <strong>AED 3.0 to AED 5.0 / sq. inch</strong>
+            <div class="price-card-list">
+              <div class="price-row-card"><span>Flat rate range</span><strong>AED 3.0 to AED 5.0 / sq. inch</strong></div>
             </div>
           </article>
 
-          <article class="pricing-card">
+          <article class="pricing-panel" id="panel-dtf" role="tabpanel" aria-labelledby="tab-dtf" data-price-panel="dtf" hidden>
             <h3>DIRECT TO FILM (DTF)</h3>
-            <div class="price-line">
-              <span>A5 / A4</span>
-              <strong>AED 0.4 to AED 0.5 / sq. inch</strong>
+            <div class="price-card-list">
+              <div class="price-row-card"><span>A5 / A4</span><strong>AED 0.4 to AED 0.5 / sq. inch</strong></div>
             </div>
           </article>
 
-          <article class="pricing-card">
+          <article class="pricing-panel" id="panel-offset" role="tabpanel" aria-labelledby="tab-offset" data-price-panel="offset" hidden>
+            <div class="subcategory-head">
+              <p class="section-kicker">Offset printing prices</p>
+              <h3>Business print packages</h3>
+            </div>
+            <div class="offset-card-list">
+              <div class="offset-price-card"><span>Business Card</span><p>500 pcs</p><strong>AED 150</strong></div>
+              <div class="offset-price-card"><span>Flyers</span><p>A5, 170 gsm, 1000 pcs</p><strong>AED 350</strong></div>
+              <div class="offset-price-card"><span>Menu / Catalogue / Brochure</span><p>A3, 350 gsm, 3-fold, 10 pcs</p><strong>AED 200</strong></div>
+              <div class="offset-price-card"><span>Letterheads</span><p>80 gsm, 500 pcs</p><strong>AED 250</strong></div>
+              <div class="offset-price-card"><span>Envelopes</span><p>C4, 100 gsm, MOQ 500 pcs</p><strong>AED 1.2 / pc</strong></div>
+              <div class="offset-price-card"><span>Envelopes</span><p>C4, 170 gsm, MOQ 500 pcs</p><strong>AED 2.5 / pc</strong></div>
+              <div class="offset-price-card"><span>Envelopes</span><p>C4, 300 gsm, MOQ 500 pcs</p><strong>AED 2.8 / pc</strong></div>
+              <div class="offset-price-card"><span>Stickers &amp; Labels</span><p>1000 pcs</p><strong>AED 300</strong></div>
+            </div>
+          </article>
+
+          <article class="pricing-panel" id="panel-silk" role="tabpanel" aria-labelledby="tab-silk" data-price-panel="silk" hidden>
             <h3>SILK SCREEN</h3>
-            <div class="price-line">
-              <span>Flat rate range</span>
-              <strong>AED 0.2 to AED 0.5 / sq. inch</strong>
+            <div class="price-card-list">
+              <div class="price-row-card"><span>Flat rate range</span><strong>AED 0.2 to AED 0.5 / sq. inch</strong></div>
             </div>
           </article>
 
-          <article class="pricing-card">
+          <article class="pricing-panel" id="panel-embroidery" role="tabpanel" aria-labelledby="tab-embroidery" data-price-panel="embroidery" hidden>
             <h3>EMBROIDERY</h3>
-            <div class="price-line">
-              <span>Logo / stitch area</span>
-              <strong>AED 2.8 / sq. inch</strong>
+            <div class="price-card-list">
+              <div class="price-row-card"><span>Logo / stitch area</span><strong>AED 2.8 / sq. inch</strong></div>
             </div>
           </article>
         </div>
+      </section>
 
-        <div class="offset-price-panel">
-          <div class="subcategory-head">
-            <p class="section-kicker">Offset printing prices</p>
-            <h3>Business print packages</h3>
+      <section class="trust-section" id="trust">
+        <div class="trust-strip">
+          <div>
+            <p class="section-kicker">Social proof</p>
+            <h2>Follow the latest work from ScienPrintUAE</h2>
           </div>
-          <div class="price-table-wrap">
-            <table class="price-table">
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Specification</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Business Card</td><td>500 pcs</td><td>AED 150</td></tr>
-                <tr><td>Flyers</td><td>A5, 170 gsm, 1000 pcs</td><td>AED 350</td></tr>
-                <tr><td>Menu / Catalogue / Brochure</td><td>A3, 350 gsm, 3-fold, 10 pcs</td><td>AED 200</td></tr>
-                <tr><td>Letterheads</td><td>80 gsm, 500 pcs</td><td>AED 250</td></tr>
-                <tr><td>Envelopes</td><td>C4, 100 gsm, MOQ 500 pcs</td><td>AED 1.2 / pc</td></tr>
-                <tr><td>Envelopes</td><td>C4, 170 gsm, MOQ 500 pcs</td><td>AED 2.5 / pc</td></tr>
-                <tr><td>Envelopes</td><td>C4, 300 gsm, MOQ 500 pcs</td><td>AED 2.8 / pc</td></tr>
-                <tr><td>Stickers &amp; Labels</td><td>1000 pcs</td><td>AED 300</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <a class="btn btn-primary" href="https://www.instagram.com/scienprintuae/" target="_blank" rel="noreferrer">Follow @scienprintuae</a>
+        </div>
+        <div class="testimonial-grid" aria-label="Client testimonials">
+          <article><p>[Add testimonial]</p><span>Client name</span></article>
+          <article><p>[Add testimonial]</p><span>Client name</span></article>
+          <article><p>[Add testimonial]</p><span>Client name</span></article>
         </div>
       </section>
       <section class="process" id="process">
@@ -400,19 +405,45 @@
             </p>
           </div>
           <form class="quote-form" id="quoteForm">
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="text" name="contact" placeholder="Email or phone" required />
-            <select name="service">
-              <option>LASER PRINTING</option>
-              <option>UV PRINTING</option>
-              <option>DIRECT TO FILM (DTF)</option>
-              <option>OFFSET PRINTING</option>
-              <option>SILK SCREEN PRINTING</option>
-              <option>EMBROIDERY</option>
-              <option>Custom Order</option>
-            </select>
-            <textarea name="notes" rows="4" placeholder="Tell us sizes, quantity, finishing, deadline, or delivery details"></textarea>
-            <button class="btn btn-primary" type="submit">Copy Enquiry</button>
+            <div class="quote-progress" aria-label="Quote form progress">
+              <span class="active">1</span>
+              <span>2</span>
+              <span>3</span>
+            </div>
+
+            <fieldset class="quote-step active" data-quote-step="0">
+              <legend>Step 1: choose service</legend>
+              <select name="service">
+                <option>LASER PRINTING</option>
+                <option>UV PRINTING</option>
+                <option>DIRECT TO FILM (DTF)</option>
+                <option>OFFSET PRINTING</option>
+                <option>SILK SCREEN PRINTING</option>
+                <option>EMBROIDERY</option>
+                <option>Custom Order</option>
+              </select>
+            </fieldset>
+
+            <fieldset class="quote-step" data-quote-step="1" hidden>
+              <legend>Step 2: project details</legend>
+              <input type="text" name="quantity" placeholder="Quantity" />
+              <input type="text" name="size" placeholder="Size or dimensions" />
+              <input type="text" name="deadline" placeholder="Deadline" />
+              <textarea name="notes" rows="4" placeholder="Tell us material, finishing, artwork, or delivery details"></textarea>
+            </fieldset>
+
+            <fieldset class="quote-step" data-quote-step="2" hidden>
+              <legend>Step 3: contact & review</legend>
+              <input type="text" name="name" placeholder="Your name" required />
+              <input type="text" name="contact" placeholder="Email or phone" required />
+              <div class="quote-review" id="quoteReview" aria-live="polite"></div>
+            </fieldset>
+
+            <div class="quote-actions">
+              <button class="btn btn-outline quote-prev" type="button" hidden>Back</button>
+              <button class="btn btn-primary quote-next" type="button">Next</button>
+              <button class="btn btn-primary quote-submit" type="submit" hidden>Copy Enquiry</button>
+            </div>
           </form>
         </div>
       </section>
@@ -428,6 +459,11 @@
             <span>IG</span>
             <h3>Instagram</h3>
             <a href="https://www.instagram.com/scienprintuae/" target="_blank" rel="noreferrer">@scienprintuae</a>
+          </article>
+          <article>
+            <span>WA</span>
+            <h3>WhatsApp</h3>
+            <a href="https://wa.me/ADDWHATSAPPNUMBER" target="_blank" rel="noreferrer">[ADD WHATSAPP NUMBER]</a>
           </article>
           <article>
             <span>LOC</span>

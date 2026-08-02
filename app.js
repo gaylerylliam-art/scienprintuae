@@ -154,8 +154,17 @@ const lightboxPrev = document.querySelector("[data-lightbox-prev]");
 const lightboxNext = document.querySelector("[data-lightbox-next]");
 const quoteForm = document.querySelector("#quoteForm");
 const serviceSelect = quoteForm?.querySelector('select[name="service"]');
+const pricingTabs = document.querySelectorAll("[data-price-tab]");
+const pricingPanels = document.querySelectorAll("[data-price-panel]");
+const quoteSteps = Array.from(document.querySelectorAll(".quote-step"));
+const quoteProgress = Array.from(document.querySelectorAll(".quote-progress span"));
+const quotePrev = document.querySelector(".quote-prev");
+const quoteNext = document.querySelector(".quote-next");
+const quoteSubmit = document.querySelector(".quote-submit");
+const quoteReview = document.querySelector("#quoteReview");
 let activeGalleryIndex = 0;
 let lastFocusedElement = null;
+let activeQuoteStep = 0;
 
 function money(value) {
   return `AED ${value.toLocaleString("en-AE")}`;
@@ -217,6 +226,24 @@ galleryFilters.forEach((button) => {
     galleryItems.forEach((item) => {
       const shouldShow = button.dataset.galleryFilter === "all" || item.dataset.galleryCategory === button.dataset.galleryFilter;
       item.classList.toggle("is-hidden", !shouldShow);
+    });
+  });
+});
+
+pricingTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const target = tab.dataset.priceTab;
+
+    pricingTabs.forEach((item) => {
+      const isActive = item === tab;
+      item.classList.toggle("active", isActive);
+      item.setAttribute("aria-selected", String(isActive));
+    });
+
+    pricingPanels.forEach((panel) => {
+      const isActive = panel.dataset.pricePanel === target;
+      panel.classList.toggle("active", isActive);
+      panel.hidden = !isActive;
     });
   });
 });
@@ -319,8 +346,56 @@ document.querySelectorAll("[data-service-quote]").forEach((link) => {
   link.addEventListener("click", () => {
     if (!serviceSelect) return;
     serviceSelect.value = link.dataset.serviceQuote;
+    showQuoteStep(0);
   });
 });
+
+function showQuoteStep(step) {
+  activeQuoteStep = Math.max(0, Math.min(step, quoteSteps.length - 1));
+
+  quoteSteps.forEach((item, index) => {
+    const isActive = index === activeQuoteStep;
+    item.classList.toggle("active", isActive);
+    item.hidden = !isActive;
+  });
+
+  quoteProgress.forEach((item, index) => {
+    item.classList.toggle("active", index <= activeQuoteStep);
+  });
+
+  quotePrev.hidden = activeQuoteStep === 0;
+  quoteNext.hidden = activeQuoteStep === quoteSteps.length - 1;
+  quoteSubmit.hidden = activeQuoteStep !== quoteSteps.length - 1;
+  updateQuoteReview();
+}
+
+function updateQuoteReview() {
+  if (!quoteReview || !quoteForm) return;
+  const formData = new FormData(quoteForm);
+  quoteReview.innerHTML = `
+    <strong>Review enquiry</strong>
+    <span>Service: ${formData.get("service") || "Not selected"}</span>
+    <span>Quantity: ${formData.get("quantity") || "Not provided"}</span>
+    <span>Size: ${formData.get("size") || "Not provided"}</span>
+    <span>Deadline: ${formData.get("deadline") || "Not provided"}</span>
+  `;
+}
+
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add("show"));
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 220);
+  }, 2400);
+}
+
+quotePrev?.addEventListener("click", () => showQuoteStep(activeQuoteStep - 1));
+quoteNext?.addEventListener("click", () => showQuoteStep(activeQuoteStep + 1));
+quoteForm?.addEventListener("input", updateQuoteReview);
 
 quoteForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -330,16 +405,20 @@ quoteForm.addEventListener("submit", (event) => {
     `Name: ${formData.get("name")}`,
     `Contact: ${formData.get("contact")}`,
     `Service: ${formData.get("service")}`,
+    `Quantity: ${formData.get("quantity") || "Not provided"}`,
+    `Size: ${formData.get("size") || "Not provided"}`,
+    `Deadline: ${formData.get("deadline") || "Not provided"}`,
     `Notes: ${formData.get("notes") || "No notes"}`,
   ].join("\n");
 
   navigator.clipboard
     ?.writeText(message)
-    .then(() => alert("Your enquiry is copied. Send it to ScienPrintUAE on Instagram."))
-    .catch(() => alert(message));
+    .then(() => showToast("Enquiry copied"))
+    .catch(() => showToast("Copy blocked. Please copy the enquiry manually."));
 });
 
 window.addEventListener("scroll", updateHeaderState, { passive: true });
 updateHeaderState();
 showReveals();
+showQuoteStep(0);
 renderProducts();
