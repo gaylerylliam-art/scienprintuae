@@ -152,8 +152,11 @@ h3 {
   color: var(--gold);
 }
 
-.cart-button,
+.header-cta,
 .inline-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--gold);
   border-radius: 999px;
   background: var(--gold);
@@ -163,21 +166,10 @@ h3 {
   letter-spacing: 0.5px;
 }
 
-.cart-button {
+.header-cta {
   min-height: 42px;
   padding: 0 18px;
-}
-
-.cart-button span {
-  display: inline-grid;
-  place-items: center;
-  min-width: 24px;
-  height: 24px;
-  margin-left: 6px;
-  border-radius: 50%;
-  background: var(--dark);
-  color: var(--gold-light);
-  font-size: 12px;
+  white-space: nowrap;
 }
 
 .overlay {
@@ -585,6 +577,9 @@ section {
 }
 
 .add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 39px;
   padding: 0 16px;
   border: 0;
@@ -1045,7 +1040,7 @@ section {
     letter-spacing: 0.3px;
   }
 
-  .cart-button {
+  .header-cta {
     min-height: 38px;
     padding: 0 12px;
     font-size: 12px;

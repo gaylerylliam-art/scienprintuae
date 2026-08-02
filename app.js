@@ -142,15 +142,8 @@ const products = [
 ];
 
 const productGrid = document.querySelector("#productGrid");
-const drawer = document.querySelector("#cartDrawer");
-const overlay = document.querySelector("#overlay");
-const drawerItems = document.querySelector("#drawerItems");
-const drawerTotal = document.querySelector("#drawerTotal");
-const cartCount = document.querySelector("#cartCount");
 const filters = document.querySelectorAll(".filter");
 const quoteForm = document.querySelector("#quoteForm");
-const quoteLink = document.querySelector("#quoteLink");
-const cart = new Map();
 
 function money(value) {
   return `AED ${value.toLocaleString("en-AE")}`;
@@ -173,7 +166,7 @@ function renderProducts(filter = "all") {
             </div>
             <div class="product-footer">
               <div class="price">${money(product.price)} <span>starting from</span></div>
-              <button class="add-btn" data-product-id="${product.id}" type="button">Add</button>
+              <a class="add-btn" href="#quote">Enquire</a>
             </div>
           </div>
         </article>
@@ -181,93 +174,6 @@ function renderProducts(filter = "all") {
     )
     .join("");
 }
-
-function getSelectedProductsText() {
-  return Array.from(cart.values())
-    .map(({ product, quantity }) => `${quantity} x ${product.name}`)
-    .join(", ");
-}
-
-function renderCart() {
-  const items = Array.from(cart.values());
-  const count = items.reduce((sum, item) => sum + item.quantity, 0);
-  const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-
-  cartCount.textContent = count;
-  drawerTotal.textContent = money(total);
-
-  if (!items.length) {
-    drawerItems.innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
-    return;
-  }
-
-  drawerItems.innerHTML = items
-    .map(
-      ({ product, quantity }) => `
-        <div class="drawer-row">
-          <div class="drawer-row-top">
-            <strong>${product.name}</strong>
-            <span>${money(product.price * quantity)}</span>
-          </div>
-          <div class="quantity-controls">
-            <button type="button" data-action="decrease" data-product-id="${product.id}" aria-label="Decrease ${product.name}">-</button>
-            <span>${quantity}</span>
-            <button type="button" data-action="increase" data-product-id="${product.id}" aria-label="Increase ${product.name}">+</button>
-          </div>
-        </div>
-      `,
-    )
-    .join("");
-}
-
-function addToCart(productId) {
-  const product = products.find((item) => item.id === productId);
-  if (!product) return;
-
-  const existing = cart.get(productId);
-  cart.set(productId, {
-    product,
-    quantity: existing ? existing.quantity + 1 : 1,
-  });
-  renderCart();
-  openCart();
-}
-
-function openCart() {
-  drawer.classList.add("open");
-  overlay.classList.add("show");
-}
-
-function closeCart() {
-  drawer.classList.remove("open");
-  overlay.classList.remove("show");
-}
-
-document.querySelector("#cartToggle").addEventListener("click", openCart);
-document.querySelector("#contactCartButton").addEventListener("click", openCart);
-document.querySelector("#drawerClose").addEventListener("click", closeCart);
-overlay.addEventListener("click", closeCart);
-quoteLink.addEventListener("click", closeCart);
-
-productGrid.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-product-id]");
-  if (!button) return;
-  addToCart(button.dataset.productId);
-});
-
-drawerItems.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-action]");
-  if (!button) return;
-
-  const item = cart.get(button.dataset.productId);
-  if (!item) return;
-
-  item.quantity += button.dataset.action === "increase" ? 1 : -1;
-  if (item.quantity <= 0) {
-    cart.delete(button.dataset.productId);
-  }
-  renderCart();
-});
 
 filters.forEach((button) => {
   button.addEventListener("click", () => {
@@ -285,7 +191,6 @@ quoteForm.addEventListener("submit", (event) => {
     `Name: ${formData.get("name")}`,
     `Contact: ${formData.get("contact")}`,
     `Service: ${formData.get("service")}`,
-    `Products: ${getSelectedProductsText() || "No products selected"}`,
     `Notes: ${formData.get("notes") || "No notes"}`,
   ].join("\n");
 
@@ -296,4 +201,3 @@ quoteForm.addEventListener("submit", (event) => {
 });
 
 renderProducts();
-renderCart();
